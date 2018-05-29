@@ -22,4 +22,4 @@ deploy:
     secure: $GITHUB_OAUTH_TOKEN
   file_glob: true
   file: videos.tar.bz2
-  skip_cleanup: false
+  skip_cleanup: true
