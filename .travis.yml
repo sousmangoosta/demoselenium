@@ -8,3 +8,14 @@ before_install:
   - docker pull dosel/zalenium
   - docker run --rm -d --name zalenium -p 4444:4444 -v /var/run/docker.sock:/var/run/docker.sock
     -v /tmp/videos:/home/seluser/videos --privileged dosel/zalenium start
+
+before_deploy:
+  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+
+deploy:
+  provider: releases
+  api_key:
+    secure: $GITHUB_OAUTH_TOKEN
+  file_glob: true
+  file: /tmp/videos/**/*
+  skip_cleanup: true
