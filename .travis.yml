@@ -10,7 +10,7 @@ before_install:
     -v $TRAVIS_BUILD_DIR/videos:/home/seluser/videos --privileged dosel/zalenium start
 
 before_deploy:
-  - find $TRAVIS_BUILD_DIR/videos -type f -empty
+  - find $TRAVIS_BUILD_DIR/videos -type f
   - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 
 deploy:
