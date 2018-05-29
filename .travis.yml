@@ -9,9 +9,6 @@ before_install:
   - docker run --rm -d --name zalenium -p 4444:4444 -v /var/run/docker.sock:/var/run/docker.sock
     -v $TRAVIS_BUILD_DIR/videos:/home/seluser/videos --privileged dosel/zalenium start
 
-after_success:
-  - docker stop zalenium
-
 before_deploy:
   - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 
