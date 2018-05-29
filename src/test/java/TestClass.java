@@ -13,7 +13,7 @@ public class TestClass {
 
     @BeforeClass
     public static void setupBrowser() throws MalformedURLException {
-        driver = new RemoteWebDriver(new URL("http://zalenium:4444/wd/hub"), DesiredCapabilities.firefox());
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.firefox());
     }
 
     @Before
