@@ -10,13 +10,13 @@ before_install:
     -v $TRAVIS_BUILD_DIR/videos:/home/seluser/videos --privileged dosel/zalenium start
 
 before_deploy:
-  - find $TRAVIS_BUILD_DIR/videos -type f
+  - find $TRAVIS_BUILD_DIR/videos
   - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 
-deploy:
-  provider: releases
-  api_key:
-    secure: $GITHUB_OAUTH_TOKEN
-  file_glob: true
-  file: $TRAVIS_BUILD_DIR/videos/**/*
-  skip_cleanup: true
+#deploy:
+#  provider: releases
+#  api_key:
+#    secure: $GITHUB_OAUTH_TOKEN
+#  file_glob: true
+#  file: $TRAVIS_BUILD_DIR/videos/**/*
+#  skip_cleanup: true
