@@ -13,7 +13,6 @@ after_success:
   - docker stop zalenium
 
 before_deploy:
-  - tar -cjf videos.tar.bz2 -C $TRAVIS_BUILD_DIR/videos .
   - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 
 deploy:
@@ -21,5 +20,5 @@ deploy:
   api_key:
     secure: $GITHUB_OAUTH_TOKEN
   file_glob: true
-  file: videos.tar.bz2
+  file: $TRAVIS_BUILD_DIR/videos/*.mp4
   skip_cleanup: true
